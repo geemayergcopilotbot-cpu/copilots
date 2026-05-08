@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import FileTree from './components/FileTree'
 import FileViewer from './components/FileViewer'
+import DropArea from './components/DropArea'
 
 const DEFAULT_OWNER = 'geemayergcopilotbot-cpu'
 const DEFAULT_REPO = 'copilots'
@@ -28,6 +29,7 @@ export default function App() {
           <FileTree owner={owner} repo={repo} token={token} onSelectPath={p => setSelectedPath(p)} />
         </aside>
         <section className="content">
+          <DropArea owner={owner} repo={repo} token={token} />
           {selectedPath ? (
             <FileViewer owner={owner} repo={repo} token={token} path={selectedPath} />
           ) : (

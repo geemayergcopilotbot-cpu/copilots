@@ -1,0 +1,39 @@
+{
+  "name": "copilots-electron",
+  "version": "0.1.0",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently \"npm --prefix ../gui run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "dependencies": {
+    "keytar": "^8.1.0"
+  },
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^24.6.0",
+    "concurrently": "^8.2.0",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.geemayer.copilot.copilots",
+    "files": [
+      "../gui/dist/**",
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "mac": {
+      "target": ["dmg"]
+    },
+    "win": {
+      "target": ["nsis"]
+    },
+    "linux": {
+      "target": ["AppImage"]
+    }
+  }
+}
